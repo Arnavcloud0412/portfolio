@@ -89,4 +89,8 @@
     --spot-ink: #0a0a0a;
     --spot-ink-faint: #5c5752;
   }
+
+  html[data-theme="dark"] .system-preview-frame {
+    box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.55);
+  }
 }

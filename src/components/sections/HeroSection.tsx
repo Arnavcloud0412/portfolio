@@ -49,7 +49,7 @@ export function HeroSection() {
                 className="group inline-flex cursor-pointer items-center gap-3 font-mono text-xs tracking-[0.12em] uppercase"
               >
                 <span className="border-b border-ink pb-0.5 transition-all group-hover:pl-2">
-                  Explore work
+                  Index of systems
                 </span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </button>
