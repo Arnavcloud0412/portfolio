@@ -10,7 +10,7 @@ import {
 } from "@/components/motion/FadeIn";
 import { siteConfig, skills } from "@/data/site";
 
-export default function AboutPage() {
+export function AboutSection() {
   const skillSections = [
     { title: "Design", items: skills.design },
     { title: "Engineering", items: skills.engineering },
@@ -18,7 +18,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="page-padding py-16 md:py-24">
+    <section id="about" className="section-block section-divider scroll-mt-16">
       <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
         <div>
           <FadeIn>
@@ -26,13 +26,13 @@ export default function AboutPage() {
           </FadeIn>
 
           <TextReveal delay={0.1}>
-            <h1 className="serif-display mb-10 text-[clamp(2rem,5vw,3.5rem)] leading-[1.15]">
+            <h2 className="serif-display mb-10 text-[clamp(2rem,5vw,3.5rem)] leading-[1.15]">
               I draw maps for software &amp; the occasional spaceship.
-            </h1>
+            </h2>
           </TextReveal>
 
           <FadeIn delay={0.3}>
-            <div className="space-y-5 text-[15px] leading-relaxed text-ink-muted">
+            <div className="space-y-5 text-base leading-relaxed text-ink-muted md:text-lg">
               <p>
                 I&apos;m {siteConfig.name} — a developer and designer working at the
                 intersection of craft and systems. For the past several years, I&apos;ve
@@ -65,14 +65,14 @@ export default function AboutPage() {
           {skillSections.map((section) => (
             <StaggerItem key={section.title}>
               <div className="flex items-center gap-2">
-                <span className="text-[8px] text-ink">◆</span>
+                <span className="text-[10px] text-ink">◆</span>
                 <h3 className="label-caps text-ink">{section.title}</h3>
               </div>
-              <ul className="mt-5 space-y-2.5">
+              <ul className="mt-5 space-y-3">
                 {section.items.map((item) => (
                   <li
                     key={item}
-                    className="text-sm text-ink-muted transition-colors hover:text-ink"
+                    className="text-base text-ink-muted transition-colors hover:text-ink"
                   >
                     {item}
                   </li>
@@ -82,6 +82,6 @@ export default function AboutPage() {
           ))}
         </StaggerContainer>
       </div>
-    </div>
+    </section>
   );
 }

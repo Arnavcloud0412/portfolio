@@ -33,14 +33,14 @@ function MissionClock() {
   );
 }
 
-export default function TimelinePage() {
+export function TimelineSection() {
   return (
-    <div className="page-padding py-16 md:py-24">
+    <section id="timeline" className="section-block section-divider scroll-mt-16">
       <div className="mb-16 flex flex-wrap items-start justify-between gap-6 md:mb-20">
         <TextReveal>
-          <h1 className="serif-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">
+          <h2 className="serif-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">
             The trajectory
-          </h1>
+          </h2>
         </TextReveal>
         <FadeIn delay={0.3}>
           <MissionClock />
@@ -59,10 +59,10 @@ export default function TimelinePage() {
                 </div>
                 <div>
                   <p className="label-caps mb-3">↳ {entry.location}</p>
-                  <h2 className="mb-4 text-xl font-medium tracking-tight md:text-2xl">
+                  <h3 className="mb-4 text-xl font-medium tracking-tight md:text-2xl">
                     {entry.role}
-                  </h2>
-                  <p className="max-w-lg text-sm leading-relaxed text-ink-muted md:text-[15px]">
+                  </h3>
+                  <p className="max-w-lg text-base leading-relaxed text-ink-muted md:text-lg">
                     {entry.description}
                   </p>
                 </div>
@@ -75,6 +75,6 @@ export default function TimelinePage() {
           <TimelineDots count={timeline.length} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

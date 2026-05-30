@@ -5,7 +5,7 @@
   --color-offwhite: #faf8f5;
   --color-ink: #0a0a0a;
   --color-ink-muted: #3d3d3d;
-  --color-ink-faint: #8a8580;
+  --color-ink-faint: #5c5752;
   --color-line: #d4cfc8;
 
   --font-serif: var(--font-instrument-serif), "Georgia", serif;
@@ -18,9 +18,19 @@
     scroll-behavior: smooth;
   }
 
+  html[data-theme="dark"] {
+    --color-seashell: #0a0a0a;
+    --color-offwhite: #111111;
+    --color-ink: #f7f3ee;
+    --color-ink-muted: #c8c3bc;
+    --color-ink-faint: #9a9590;
+    --color-line: #2a2a2a;
+  }
+
   body {
     @apply bg-seashell text-ink antialiased;
     font-family: var(--font-sans);
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
@@ -34,11 +44,22 @@
     background-size: 24px 24px;
   }
 
+  html[data-theme="dark"] .dot-grid {
+    background-image: radial-gradient(circle, #2a2a2a 0.8px, transparent 0.8px);
+  }
+
   .label-caps {
-    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint;
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-ink-faint;
   }
 
   .serif-display {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .serif-display-hero {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
@@ -51,5 +72,9 @@
 
   .section-divider {
     @apply border-t border-line;
+  }
+
+  .section-block {
+    @apply px-6 py-20 md:px-10 md:py-28 lg:px-16 xl:px-20;
   }
 }

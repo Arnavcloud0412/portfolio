@@ -1,99 +1,144 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { NavArchiveCta, NavArchiveLink } from "@/components/ui/ArchiveAnnotation";
 import { siteConfig } from "@/data/site";
 
+const SECTION_IDS = ["hero", "work", "about", "timeline", "contact"];
+
+const NAV_HINTS: Record<string, string> = {
+  Work: "Projects & systems",
+  About: "Profile & toolkit",
+  Timeline: "The trajectory",
+};
+
+const NAV_BUBBLE_ITEMS = siteConfig.nav.filter((item) => item.label !== "Contact");
+
 export function Header() {
-  const pathname = usePathname();
-  const isDark = pathname === "/contact";
+  const [activeSection, setActiveSection] = useState("hero");
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    const id = href.replace("#", "");
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <header
-      className={`fixed top-0 right-0 left-0 z-50 transition-colors duration-500 ${
-        isDark ? "bg-seashell text-ink" : "bg-seashell/90 text-ink backdrop-blur-sm"
-      }`}
-    >
-      <div className="page-padding flex h-14 items-center justify-between border-b border-line md:h-16">
-        <Link
-          href="/"
-          className="font-mono text-[11px] tracking-[0.15em] transition-opacity hover:opacity-60"
+    <header className="fixed top-0 right-0 left-0 z-50 bg-seashell/90 text-ink backdrop-blur-sm transition-colors duration-400">
+      <div className="page-padding flex h-14 items-center justify-between gap-4 border-b border-line md:h-16">
+        <button
+          type="button"
+          onClick={() => handleNavClick("#hero")}
+          className="font-mono text-xs tracking-[0.12em] transition-opacity hover:opacity-60"
         >
           [ {siteConfig.initials} ] — INDEX
-        </Link>
+        </button>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {siteConfig.nav.map((item) => {
-            const isActive = pathname === item.href;
+          {NAV_BUBBLE_ITEMS.map((item) => {
+            const sectionId = item.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            const hint = NAV_HINTS[item.label] ?? item.label;
+
             return (
-              <Link
+              <NavArchiveLink
                 key={item.href}
-                href={item.href}
-                className={`label-caps transition-opacity hover:opacity-100 ${
+                label={item.label}
+                hint={hint}
+                labelClassName={`label-caps cursor-pointer ${
                   isActive ? "text-ink" : "text-ink-faint opacity-80"
                 }`}
-              >
-                {item.label}
-              </Link>
+                onClick={() => handleNavClick(item.href)}
+              />
             );
           })}
         </nav>
 
-        <Link
-          href="/contact"
-          className="border border-ink px-4 py-2 font-mono text-[10px] tracking-[0.15em] uppercase transition-all hover:bg-ink hover:text-seashell"
-        >
-          Let&apos;s Talk ↗
-        </Link>
+        <div className="flex items-center gap-3 md:gap-4">
+          <ThemeToggle />
+          <NavArchiveCta
+            label="Let's Talk ↗"
+            hint="Open comms"
+            labelClassName="hidden border border-ink px-4 py-2 font-mono text-xs tracking-[0.12em] uppercase sm:inline-block"
+            onClick={() => handleNavClick("#contact")}
+            className="hidden sm:block"
+          />
+        </div>
       </div>
     </header>
   );
 }
 
 export function MobileNav() {
-  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("hero");
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    const id = href.replace("#", "");
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <nav className="fixed right-0 bottom-0 left-0 z-50 flex border-t border-line bg-seashell/95 backdrop-blur-sm md:hidden">
       {siteConfig.nav.map((item) => {
-        const isActive = pathname === item.href;
+        const sectionId = item.href.replace("#", "");
+        const isActive = activeSection === sectionId;
         return (
-          <Link
+          <button
             key={item.href}
-            href={item.href}
-            className={`flex-1 py-3 text-center font-mono text-[9px] tracking-[0.12em] uppercase ${
+            type="button"
+            onClick={() => handleNavClick(item.href)}
+            className={`flex-1 py-3.5 font-mono text-[11px] tracking-[0.1em] uppercase ${
               isActive ? "text-ink" : "text-ink-faint"
             }`}
           >
             {item.label}
-          </Link>
+          </button>
         );
       })}
     </nav>
-  );
-}
-
-export function MetaBar() {
-  return (
-    <div className="page-padding flex flex-wrap items-center justify-between gap-4 border-b border-line py-3 font-mono text-[10px] tracking-[0.12em] text-ink-faint uppercase">
-      <span>[ 001 ] Portfolio / 2026</span>
-      <span className="hidden sm:inline">
-        Lat {siteConfig.coordinates.lat} · Lon {siteConfig.coordinates.lon}
-      </span>
-      <span className="hidden md:inline">Status · {siteConfig.status}</span>
-      <span className="hidden lg:inline">Scroll ↓ · Begin transmission</span>
-    </div>
-  );
-}
-
-export function Footer() {
-  return (
-    <footer className="page-padding border-t border-line py-6">
-      <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-[9px] tracking-[0.15em] text-ink-faint uppercase">
-        <span>© 2026 {siteConfig.name.toUpperCase()} — All quiet rights reserved</span>
-        <span className="hidden md:inline">Designed in 16 cups of coffee · Built with care</span>
-        <span>v1.0 · Portfolio</span>
-      </div>
-    </footer>
   );
 }

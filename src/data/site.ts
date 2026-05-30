@@ -5,18 +5,18 @@ export const siteConfig = {
   email: "hello@arnavdeka.dev",
   location: "Guwahati, IN",
   timezone: "GMT+5:30 · Mostly nocturnal",
-  coordinates: { lat: "26.14° N", lon: "91.73° E" },
-  status: "AVAILABLE FOR WORK",
+  coordinates: { lat: "19.07° N", lon: "72.87° E" },
+  status: "Active",
   social: [
     { label: "GitHub", href: "https://github.com" },
     { label: "LinkedIn", href: "https://linkedin.com" },
     { label: "Twitter", href: "https://twitter.com" },
   ],
   nav: [
-    { label: "Work", href: "/work" },
-    { label: "About", href: "/about" },
-    { label: "Timeline", href: "/timeline" },
-    { label: "Contact", href: "/contact" },
+    { label: "Work", href: "#work" },
+    { label: "About", href: "#about" },
+    { label: "Timeline", href: "#timeline" },
+    { label: "Contact", href: "#contact" },
   ],
 };
 

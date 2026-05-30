@@ -1,22 +1,15 @@
 # Arnav Deka — Portfolio
 
-A minimalist, typography-forward portfolio built with Next.js, Tailwind CSS, and Framer Motion.
+A minimalist, typography-forward single-page portfolio built with Next.js, Tailwind CSS, and Framer Motion.
 
-## Design
+## Features
 
-- **Colors:** Seashell white (`#f7f3ee`) and off-white with jet black details
-- **Typography:** Instrument Serif (display), DM Sans (body), JetBrains Mono (labels)
-- **Aesthetic:** Spaceship manual / technical documentation with lofi line illustrations
+- **Single continuous page** — Hero, Work, About, Timeline, and Contact scroll as one flow
+- **Dark mode toggle** — persisted in localStorage with no flash on load
+- **Scroll animations** — fade-in, stagger, and text reveal on scroll
+- **Floating astronaut** — gentle animation on the landing section
 
-## Pages
-
-- **/** — Landing with floating astronaut illustration
-- **/work** — Project index with scroll animations
-- **/about** — Bio, cockpit illustration, and skills grid
-- **/timeline** — Experience trajectory with mission clock
-- **/contact** — Dark footer-style contact section
-
-## Getting Started
+## Run locally
 
 ```bash
 npm install
@@ -27,4 +20,4 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Customize
 
-Edit `src/data/site.ts` to update your projects, timeline, skills, and contact info.
+Edit `src/data/site.ts` for projects, timeline, skills, and contact info.
