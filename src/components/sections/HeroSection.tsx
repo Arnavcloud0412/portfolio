@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { AstronautIllustration } from "@/components/illustrations/Illustrations";
 import { FadeIn, TextReveal } from "@/components/motion/FadeIn";
+import { HeroXRayTitle } from "@/components/motion/HeroXRayTitle";
 import { siteConfig } from "@/data/site";
 
 export function HeroSection() {
@@ -34,12 +35,8 @@ export function HeroSection() {
             </FadeIn>
 
             <div className="flex flex-1 items-center py-4 md:py-6">
-              <TextReveal delay={0.2}>
-                <h1 className="serif-display-hero text-[clamp(3rem,min(11vw,21vh),11.5rem)] leading-[0.96] text-ink">
-                  Engineering order
-                  <br />
-                  <span className="text-ink-faint">from chaos.</span>
-                </h1>
+              <TextReveal delay={0.2} clip={false}>
+                <HeroXRayTitle />
               </TextReveal>
             </div>
 

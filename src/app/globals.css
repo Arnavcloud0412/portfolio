@@ -77,4 +77,16 @@
   .section-block {
     @apply px-6 py-20 md:px-10 md:py-28 lg:px-16 xl:px-20;
   }
+
+  .hero-xray {
+    --spot-bg: #0a0a0a;
+    --spot-ink: #f7f3ee;
+    --spot-ink-faint: #9a9590;
+  }
+
+  html[data-theme="dark"] .hero-xray {
+    --spot-bg: #f7f3ee;
+    --spot-ink: #0a0a0a;
+    --spot-ink-faint: #5c5752;
+  }
 }

@@ -113,13 +113,15 @@ export function TextReveal({
   children,
   className = "",
   delay = 0,
+  clip = true,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  clip?: boolean;
 }) {
   return (
-    <div className={`overflow-hidden ${className}`}>
+    <div className={`${clip ? "overflow-hidden" : ""} ${className}`}>
       <motion.div
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
