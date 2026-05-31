@@ -2,10 +2,10 @@ export const siteConfig = {
   name: "Arnav Deka",
   initials: "AD",
   tagline: "Developer & Designer",
-  email: "hello@arnavdeka.dev",
-  location: "Guwahati, IN",
+  email: "arnavdeka2005@gmail.com",
+  location: "Mumbai, IN",
   timezone: "GMT+5:30 · Mostly nocturnal",
-  coordinates: { lat: "19.07° N", lon: "72.87° E" },
+  coordinates: { lat: "19.076° N", lon: "72.878° E" },
   status: "Active",
   social: [
     { label: "GitHub", href: "https://github.com" },

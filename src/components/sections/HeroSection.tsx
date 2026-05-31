@@ -21,15 +21,15 @@ export function HeroSection() {
       ref={ref}
       id="hero"
       style={{ opacity, y }}
-      className="relative min-h-[calc(100vh-3.5rem)] scroll-mt-16 will-change-[opacity,transform]"
+      className="relative min-h-[calc(100vh-4rem)] scroll-mt-16 will-change-[opacity,transform]"
     >
-      <div className="page-padding relative flex min-h-[calc(100vh-3.5rem)] flex-col py-10 md:py-14">
+      <div className="page-padding relative flex min-h-[calc(100vh-4rem)] flex-col py-10 md:min-h-[calc(100vh-4.5rem)] md:py-14">
         <AstronautIllustration />
 
         <div className="flex flex-1 flex-col lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:gap-x-16">
           <div className="flex flex-1 flex-col">
             <FadeIn delay={0.1}>
-              <p className="label-caps mb-6 md:mb-8">
+              <p className="label-caps mb-6 text-sm md:mb-8 md:text-base">
                 ↳ {siteConfig.name.toUpperCase()} — {siteConfig.tagline.toUpperCase()}
               </p>
             </FadeIn>

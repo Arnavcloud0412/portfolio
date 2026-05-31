@@ -7,30 +7,53 @@ function normalizeTechKey(name: string): string {
   const n = name.toLowerCase();
   if (n.includes("next")) return "nextjs";
   if (n.includes("react")) return "react";
+  if (n.includes("angular")) return "angular";
   if (n.includes("typescript")) return "typescript";
+  if (n.includes("javascript")) return "javascript";
   if (n.includes("tailwind")) return "tailwind";
+  if (n.includes("html")) return "html";
+  if (n.includes("css")) return "css";
   if (n.includes("node")) return "nodejs";
+  if (n.includes("fastify")) return "nodejs";
   if (n.includes("postgres") || n.includes("postgis")) return "postgresql";
+  if (n.includes("mysql")) return "mysql";
   if (n.includes("prisma")) return "prisma";
+  if (n.includes("knex")) return "postgresql";
+  if (n.includes("sqlalchemy")) return "python";
   if (n.includes("redis")) return "redis";
   if (n.includes("vercel")) return "vercel";
   if (n.includes("docker")) return "docker";
-  if (n.includes("python")) return "python";
+  if (n.includes("python") || n.includes("pytest")) return "python";
+  if (n.includes("java") && !n.includes("javascript")) return "java";
+  if (n === "c" || n.startsWith("c ")) return "c";
   if (n.includes("tensorflow")) return "tensorflow";
   if (n.includes("opencv")) return "opencv";
-  if (n.includes("google") || n.includes("oauth")) return "google";
-  if (n.includes("github")) return "github";
+  if (n.includes("firebase")) return "firebase";
+  if (n.includes("google")) return "google";
+  if (n.includes("github") || n === "git") return "github";
   if (n.includes("leaflet") || n.includes("webgis") || n.includes("geoserver")) return "gis";
   if (n.includes("mdx")) return "mdx";
   if (n.includes("cms")) return "cms";
   if (n.includes("rest") || n.includes("api")) return "api";
+  if (n.includes("auth")) return "auth";
   if (n.includes("express")) return "nodejs";
   if (n.includes("flask") || n.includes("fastapi")) return "python";
   if (n.includes("streamlit")) return "streamlit";
   if (n.includes("jwt")) return "api";
   if (n.includes("sqlite")) return "postgresql";
+  if (n.includes("database")) return "postgresql";
   if (n.includes("scikit") || n.includes("ml") || n.includes("nlp")) return "ml";
   if (n.includes("pdf") || n.includes("document")) return "document";
+  if (n.includes("jenkins") || n.includes("ci/cd")) return "pipeline";
+  if (n.includes("terraform")) return "terraform";
+  if (n.includes("ansible")) return "ansible";
+  if (n.includes("aws") || n.includes("ec2") || n.includes("cloudflare")) return "cloud";
+  if (n.includes("linux") || n.includes("ubuntu") || n.includes("cron")) return "terminal";
+  if (n.includes("locust") || n.includes("stress") || n.includes("reliability")) return "testing";
+  if (n.includes("debug")) return "testing";
+  if (n.includes("maven")) return "maven";
+  if (n.includes("n8n") || n.includes("workflow") || n.includes("automation")) return "workflow";
+  if (n.includes("sandbox") || n.includes("self-hosted") || n.includes("server")) return "server";
   return "default";
 }
 
@@ -151,6 +174,155 @@ function LogoArt({ techKey }: { techKey: string }) {
           <path d="M12 6 H20 L24 10 V26 H12 Z" stroke="currentColor" strokeWidth="1" />
           <path d="M20 6 V10 H24" stroke="currentColor" strokeWidth="0.8" />
           <path d="M15 16 H21 M15 20 H19" stroke="currentColor" strokeWidth="0.7" />
+        </>
+      );
+    case "streamlit":
+      return (
+        <>
+          <rect x="8" y="8" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1" />
+          <path d="M12 14 H20 M12 17 H17 M12 20 H19" stroke="currentColor" strokeWidth="0.7" />
+        </>
+      );
+    case "javascript":
+      return (
+        <>
+          <rect x="6" y="6" width="20" height="20" stroke="currentColor" strokeWidth="1" />
+          <path d="M12 22 V14 L15 20 L18 14 V22" stroke="currentColor" strokeWidth="0.85" />
+          <path d="M20 14 V22 M20 14 C20 14 23 14 23 17 C23 20 20 20 20 20 V22" stroke="currentColor" strokeWidth="0.85" />
+        </>
+      );
+    case "angular":
+      return (
+        <>
+          <path d="M16 5 L26 9 L23 24 H9 L6 9 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M16 11 L19 19 H13 Z" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "html":
+      return (
+        <>
+          <path d="M8 6 L24 6 L22 24 L16 26 L10 24 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M12 11 H20 M12 15 H19 M14 19 L16 21 L18 19" stroke="currentColor" strokeWidth="0.75" />
+        </>
+      );
+    case "css":
+      return (
+        <>
+          <path d="M8 6 L24 6 L22 24 L16 26 L10 24 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M16 11 V19 M13 14 H19 M13 17 H18" stroke="currentColor" strokeWidth="0.75" />
+        </>
+      );
+    case "java":
+      return (
+        <>
+          <path d="M14 8 C10 10 10 14 14 16 C18 18 20 20 16 22" stroke="currentColor" strokeWidth="0.9" />
+          <path d="M18 10 C22 12 22 16 18 18" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "c":
+      return (
+        <>
+          <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1" />
+          <path d="M20 12 C16 10 12 12 12 16 C12 20 16 22 20 20" stroke="currentColor" strokeWidth="0.9" />
+        </>
+      );
+    case "mysql":
+      return (
+        <>
+          <path d="M16 6 C10 6 8 10 8 14 C8 18 10 22 16 24 C22 22 24 18 24 14 C24 10 22 6 16 6" stroke="currentColor" strokeWidth="1" />
+          <path d="M12 14 H20" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "firebase":
+      return (
+        <>
+          <path d="M16 6 L24 22 H8 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M16 14 L20 22 H12 Z" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "github":
+      return (
+        <>
+          <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1" />
+          <path d="M12 14 C12 12 13 11 16 11 C19 11 20 12 20 14 C20 16 18 16 18 18 V19" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "auth":
+      return (
+        <>
+          <rect x="10" y="14" width="12" height="10" rx="1" stroke="currentColor" strokeWidth="1" />
+          <path d="M13 14 V11 C13 9 14 7 16 7 C18 7 19 9 19 11 V14" stroke="currentColor" strokeWidth="0.9" />
+        </>
+      );
+    case "pipeline":
+      return (
+        <>
+          <circle cx="10" cy="16" r="3" stroke="currentColor" strokeWidth="0.9" />
+          <circle cx="22" cy="16" r="3" stroke="currentColor" strokeWidth="0.9" />
+          <path d="M13 16 H19 M16 13 V19" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "terraform":
+      return (
+        <>
+          <path d="M8 22 L16 6 L24 22 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M11 18 H21" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "ansible":
+      return (
+        <>
+          <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1" />
+          <path d="M11 18 L16 10 L21 18" stroke="currentColor" strokeWidth="0.9" />
+        </>
+      );
+    case "cloud":
+      return (
+        <path d="M10 20 H22 C25 20 26 17 24 15 C24 11 21 9 18 10 C16 7 12 7 10 10 C7 10 6 13 8 15 C6 17 7 20 10 20" stroke="currentColor" strokeWidth="1" />
+      );
+    case "terminal":
+      return (
+        <>
+          <rect x="6" y="8" width="20" height="16" rx="1" stroke="currentColor" strokeWidth="1" />
+          <path d="M10 14 L13 16 L10 18 M15 18 H20" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "testing":
+      return (
+        <>
+          <path d="M10 8 H22 L20 24 H12 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M14 13 H18 M14 17 H17" stroke="currentColor" strokeWidth="0.7" />
+        </>
+      );
+    case "maven":
+      return (
+        <>
+          <path d="M8 20 L16 8 L24 20 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M12 16 H20" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "workflow":
+      return (
+        <>
+          <rect x="6" y="10" width="8" height="6" stroke="currentColor" strokeWidth="0.9" />
+          <rect x="18" y="16" width="8" height="6" stroke="currentColor" strokeWidth="0.9" />
+          <path d="M14 13 C16 13 16 19 18 19" stroke="currentColor" strokeWidth="0.8" />
+        </>
+      );
+    case "server":
+      return (
+        <>
+          <rect x="8" y="8" width="16" height="6" stroke="currentColor" strokeWidth="0.9" />
+          <rect x="8" y="16" width="16" height="6" stroke="currentColor" strokeWidth="0.9" />
+          <circle cx="12" cy="11" r="1" fill="currentColor" />
+          <circle cx="12" cy="19" r="1" fill="currentColor" />
+        </>
+      );
+    case "prisma":
+      return (
+        <>
+          <path d="M16 6 L24 26 H8 Z" stroke="currentColor" strokeWidth="1" />
+          <path d="M16 12 V20" stroke="currentColor" strokeWidth="0.8" />
         </>
       );
     default:

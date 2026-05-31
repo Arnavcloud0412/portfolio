@@ -1,5 +1,13 @@
 export { siteConfig } from "./site-config";
 export { skillCategories, type SkillCategory } from "./skills";
+export {
+  getSkillBrief,
+  getSkillDeployments,
+  skillBriefs,
+  skillDeployments,
+  type SkillBrief,
+  type SkillDeployment,
+} from "./skill-briefs";
 
 export type { SystemDetail as System } from "./systems";
 

@@ -50,11 +50,11 @@ export function Header() {
 
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-seashell/90 text-ink backdrop-blur-sm transition-colors duration-400">
-      <div className="page-padding flex h-14 items-center justify-between gap-4 border-b border-line md:h-16">
+      <div className="page-padding flex h-16 items-center justify-between gap-4 border-b border-line md:h-[4.5rem]">
         <button
           type="button"
           onClick={() => handleNavClick("#hero")}
-          className="font-mono text-xs tracking-[0.12em] transition-opacity hover:opacity-60"
+          className="font-mono text-sm tracking-[0.12em] text-ink transition-opacity hover:opacity-60"
         >
           [ {siteConfig.initials} ] — INDEX
         </button>
@@ -70,8 +70,8 @@ export function Header() {
                 key={item.href}
                 label={item.label}
                 hint={hint}
-                labelClassName={`label-caps cursor-pointer ${
-                  isActive ? "text-ink" : "text-ink-faint opacity-80"
+                labelClassName={`cursor-pointer font-mono text-sm uppercase tracking-[0.18em] text-ink ${
+                  isActive ? "font-medium" : "opacity-80"
                 }`}
                 onClick={() => handleNavClick(item.href)}
               />
@@ -84,7 +84,7 @@ export function Header() {
           <NavArchiveCta
             label="Let's Talk ↗"
             hint="Open comms"
-            labelClassName="hidden border border-ink px-4 py-2 font-mono text-xs tracking-[0.12em] uppercase sm:inline-block"
+            labelClassName="hidden border border-ink px-4 py-2 font-mono text-sm tracking-[0.12em] text-ink uppercase sm:inline-block"
             onClick={() => handleNavClick("#contact")}
             className="hidden sm:block"
           />
@@ -124,7 +124,7 @@ export function MobileNav() {
   };
 
   return (
-    <nav className="fixed right-0 bottom-0 left-0 z-50 flex border-t border-line bg-seashell/95 backdrop-blur-sm md:hidden">
+    <nav className="fixed right-0 bottom-0 left-0 z-50 flex border-t border-line bg-seashell/95 text-ink backdrop-blur-sm md:hidden">
       {siteConfig.nav.map((item) => {
         const sectionId = item.href.replace("#", "");
         const isActive = activeSection === sectionId;
@@ -133,8 +133,8 @@ export function MobileNav() {
             key={item.href}
             type="button"
             onClick={() => handleNavClick(item.href)}
-            className={`flex-1 py-3.5 font-mono text-[11px] tracking-[0.1em] uppercase ${
-              isActive ? "text-ink" : "text-ink-faint"
+            className={`flex-1 py-3.5 font-mono text-xs tracking-[0.1em] text-ink uppercase sm:text-sm ${
+              isActive ? "font-medium" : "opacity-80"
             }`}
           >
             {item.label}

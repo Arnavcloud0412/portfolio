@@ -40,7 +40,7 @@ export function NavArchiveLink({
           {label}
         </motion.span>
         <motion.span
-          className="whitespace-nowrap font-mono text-[11px] tracking-normal normal-case text-ink-muted"
+          className="whitespace-nowrap font-mono text-xs tracking-normal text-ink-muted normal-case sm:text-sm"
           initial={false}
           animate={{ opacity: hovered ? 1 : 0 }}
           transition={FADE}
@@ -97,7 +97,7 @@ export function NavArchiveCta({
           {label}
         </motion.span>
         <motion.span
-          className="whitespace-nowrap text-[11px] tracking-normal normal-case"
+          className="whitespace-nowrap text-xs tracking-normal normal-case sm:text-sm"
           initial={false}
           animate={{ opacity: hovered ? 1 : 0 }}
           transition={FADE}
