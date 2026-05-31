@@ -1,11 +1,26 @@
 "use client";
 
 import { XRaySpotlight } from "@/components/motion/XRaySpotlight";
+import { useIsDesktop } from "@/hooks/useMediaQuery";
 
 const heroClasses =
-  "serif-display-hero text-[clamp(3rem,min(11vw,21vh),11.5rem)] leading-[0.96]";
+  "serif-display-hero text-[clamp(2.25rem,12vw,11.5rem)] leading-[0.96]";
+
+const heroContent = (
+  <>
+    Engineering order
+    <br />
+    <span className="text-ink-faint">from chaos.</span>
+  </>
+);
 
 export function HeroXRayTitle() {
+  const isDesktop = useIsDesktop();
+
+  if (!isDesktop) {
+    return <h1 className={`${heroClasses} text-ink`}>{heroContent}</h1>;
+  }
+
   return (
     <XRaySpotlight
       spotlight={

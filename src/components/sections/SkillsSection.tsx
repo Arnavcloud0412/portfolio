@@ -18,9 +18,11 @@ const FADE = { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const };
 function DeploymentStrip({
   skill,
   onClear,
+  compact = false,
 }: {
   skill: string;
   onClear: () => void;
+  compact?: boolean;
 }) {
   const brief = getSkillBrief(skill);
   const deployments = getSkillDeployments(skill);
@@ -32,7 +34,11 @@ function DeploymentStrip({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 4 }}
       transition={FADE}
-      className="mt-10 border-t border-line pt-6 md:mt-12"
+      className={
+        compact
+          ? "mt-4 border-t border-line pt-4"
+          : "mt-10 border-t border-line pt-6 md:mt-12"
+      }
     >
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <p className="max-w-3xl text-sm leading-relaxed text-ink-muted md:text-base">
@@ -144,6 +150,18 @@ export function SkillsSection() {
                   />
                 ))}
               </div>
+
+              <AnimatePresence mode="wait">
+                {selectedSkill && category.items.includes(selectedSkill) && (
+                  <div className="md:hidden">
+                    <DeploymentStrip
+                      skill={selectedSkill}
+                      onClear={() => setSelectedSkill(null)}
+                      compact
+                    />
+                  </div>
+                )}
+              </AnimatePresence>
             </div>
           </StaggerItem>
         ))}
@@ -151,7 +169,9 @@ export function SkillsSection() {
 
       <AnimatePresence mode="wait">
         {selectedSkill && (
-          <DeploymentStrip skill={selectedSkill} onClear={() => setSelectedSkill(null)} />
+          <div className="hidden md:block">
+            <DeploymentStrip skill={selectedSkill} onClear={() => setSelectedSkill(null)} />
+          </div>
         )}
       </AnimatePresence>
     </section>

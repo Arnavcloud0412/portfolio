@@ -75,7 +75,7 @@
   }
 
   .section-block {
-    @apply px-6 py-20 md:px-10 md:py-28 lg:px-16 xl:px-20;
+    @apply px-6 py-16 md:px-10 md:py-28 lg:px-16 xl:px-20;
   }
 
   .hero-xray {

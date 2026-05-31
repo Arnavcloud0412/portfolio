@@ -22,7 +22,7 @@ export function MetricsStrip({ metrics, className = "", invert = false }: Metric
           <div
             key={metric.label}
             className={`${
-              index > 0 ? "sm:border-l sm:pl-8" : ""
+              index > 0 ? "border-t border-line pt-8 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-8" : ""
             } ${invert ? "border-seashell/15" : "border-line"}`}
           >
             <p className="serif-display text-[clamp(1.75rem,4vw,2.75rem)] leading-none">

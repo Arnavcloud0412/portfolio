@@ -1,27 +1,15 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { AstronautIllustration } from "@/components/illustrations/Illustrations";
 import { FadeIn, TextReveal } from "@/components/motion/FadeIn";
 import { HeroXRayTitle } from "@/components/motion/HeroXRayTitle";
 import { siteConfig } from "@/data/site";
 
 export function HeroSection() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const opacity = useTransform(scrollYProgress, [0, 0.45, 1], [1, 0.55, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -48]);
-
   return (
-    <motion.section
-      ref={ref}
+    <section
       id="hero"
-      style={{ opacity, y }}
-      className="relative min-h-[calc(100vh-4rem)] scroll-mt-16 will-change-[opacity,transform]"
+      className="relative min-h-[calc(100vh-4rem)] scroll-mt-16 md:min-h-[calc(100vh-4.5rem)]"
     >
       <div className="page-padding relative flex min-h-[calc(100vh-4rem)] flex-col py-10 md:min-h-[calc(100vh-4.5rem)] md:py-14">
         <AstronautIllustration />
@@ -68,6 +56,6 @@ export function HeroSection() {
           </FadeIn>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { SystemImagePreview, useSystemImage } from "@/components/ui/SystemImagePreview";
+import { SystemImageInline, SystemImagePreview, useSystemImage } from "@/components/ui/SystemImagePreview";
 import { getSystemPath, type SystemDetail } from "@/data/systems";
 
 function formatTags(system: SystemDetail) {
@@ -112,6 +112,11 @@ export function SystemIndexRow({
           >
             {system.description}
           </p>
+          {showPreview && hasImage === true && (
+            <div className="mt-6 md:hidden">
+              <SystemImageInline id={system.id} title={system.title} />
+            </div>
+          )}
         </div>
       </Link>
     </article>

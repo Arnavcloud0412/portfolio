@@ -3,11 +3,16 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { siteConfig } from "@/data/site";
+import { useIsLargeDesktop } from "@/hooks/useMediaQuery";
 
 export function AstronautIllustration() {
+  const isLargeDesktop = useIsLargeDesktop();
+
+  if (!isLargeDesktop) return null;
+
   return (
     <motion.div
-      className="pointer-events-none absolute right-[3%] top-[14%] hidden w-80 lg:block xl:right-[5%] xl:top-[16%] xl:w-[26rem] 2xl:w-[32rem]"
+      className="pointer-events-none absolute right-[3%] top-[14%] w-80 xl:right-[5%] xl:top-[16%] xl:w-[26rem] 2xl:w-[32rem]"
       animate={{
         y: [0, -18, -8, -22, 0],
         x: [0, 6, -4, 5, 0],
