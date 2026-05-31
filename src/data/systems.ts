@@ -185,23 +185,22 @@ export const allSystems: SystemDetail[] = [
   {
     id: "008",
     title: "Soch Alegria",
-    tags: ["CULTURAL", "DIGITAL EXPERIENCE"],
+    tags: ["CULTURAL", "EVENT OPERATIONS"],
     year: "2025",
     description:
-      "A digital platform designed to showcase stories, initiatives, events, and creative work associated with the Alegria ecosystem through an engaging editorial experience.",
+      "A digital event operations platform for one of Alegria's flagship cultural events — centralized registrations, attendance, receipt validation, and real-time analytics.",
     summary: [
-      "Soch Alegria is the editorial layer of the Alegria ecosystem — stories, initiatives, and creative work presented through a typographic, magazine-style reading experience.",
-      "Content structure prioritizes narrative flow over feed mechanics: long-form pieces, event highlights, and initiative archives are browsable as a cultural record.",
+      "Soch Alegria is a digital event operations platform designed to streamline registrations, attendance management, receipt validation, and real-time analytics for one of Alegria's flagship cultural events. The system replaces fragmented manual workflows with a centralized operational hub, enabling organizers to manage participants, monitor event activity, and maintain data integrity throughout the event lifecycle.",
     ],
     technologies: {
-      frontend: ["Next.js", "React", "MDX"],
-      backend: ["Headless CMS"],
-      data: ["Content API", "Image optimization"],
-      infra: ["Vercel", "CDN"],
+      frontend: ["Next.js", "React", "TypeScript"],
+      backend: ["Node.js", "REST APIs"],
+      data: ["PostgreSQL", "Redis"],
+      infra: ["Vercel", "CI/CD"],
     },
     diagram: "editorial",
-    status: "Production · Cultural archive",
-    scope: "Alegria ecosystem",
+    status: "Production · Flagship cultural event",
+    scope: "Soch Alegria - event operations",
   },
   {
     id: "009",
@@ -282,4 +281,8 @@ export function getSystemById(id: string): SystemDetail | undefined {
 
 export function getSystemPath(id: string): string {
   return `/systems/${id}`;
+}
+
+export function getArchivePath(): string {
+  return "/archive";
 }

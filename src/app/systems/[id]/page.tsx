@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SystemDiagrams } from "@/components/systems/SystemDiagrams";
 import { SystemInterfaceCapture } from "@/components/systems/SystemInterfaceCapture";
+import { SystemPulseSection } from "@/components/systems/SystemPulseSection";
+import { SystemTechStack } from "@/components/systems/SystemTechStack";
 import { FadeIn, LineDraw, TextReveal } from "@/components/motion/FadeIn";
+import { getSystemHighlight } from "@/data/system-highlights";
 import {
   allSystems,
   getSystemById,
@@ -13,13 +15,6 @@ import {
 function formatTags(system: SystemDetail) {
   return [...system.tags, system.year].join(" · ");
 }
-
-const TECH_LABELS: Record<keyof SystemDetail["technologies"], string> = {
-  frontend: "Frontend",
-  backend: "Backend",
-  data: "Data & ML",
-  infra: "Infrastructure",
-};
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -44,6 +39,8 @@ export default async function SystemPage({ params }: PageProps) {
   const { id } = await params;
   const system = getSystemById(id);
   if (!system) notFound();
+
+  const highlight = getSystemHighlight(id);
 
   const index = allSystems.findIndex((s) => s.id === id);
   const prev = index > 0 ? allSystems[index - 1] : null;
@@ -110,38 +107,17 @@ export default async function SystemPage({ params }: PageProps) {
         <FadeIn>
           <h2 className="label-caps mb-10">Technology stack</h2>
         </FadeIn>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {(Object.keys(system.technologies) as (keyof SystemDetail["technologies"])[]).map(
-            (key, i) => (
-              <FadeIn key={key} delay={0.1 + i * 0.05}>
-                <div>
-                  <p className="label-caps mb-4 text-ink">{TECH_LABELS[key]}</p>
-                  <ul className="space-y-2">
-                    {system.technologies[key].map((tech) => (
-                      <li
-                        key={tech}
-                        className="font-mono text-sm tracking-wide text-ink-muted"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
-            )
-          )}
-        </div>
+        <SystemTechStack technologies={system.technologies} />
       </section>
 
-      <section className="mt-20 md:mt-28">
-        <LineDraw className="mb-12" />
-        <FadeIn>
-          <h2 className="label-caps mb-10">System schematics</h2>
-        </FadeIn>
-        <FadeIn delay={0.15}>
-          <SystemDiagrams type={system.diagram} systemId={system.id} />
-        </FadeIn>
-      </section>
+      {highlight && (
+        <section className="mt-20 md:mt-28">
+          <LineDraw className="mb-12" />
+          <FadeIn delay={0.1}>
+            <SystemPulseSection highlight={highlight} />
+          </FadeIn>
+        </section>
+      )}
 
       <nav className="mt-20 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-10 md:mt-28">
         {prev ? (

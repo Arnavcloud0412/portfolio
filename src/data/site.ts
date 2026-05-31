@@ -6,6 +6,7 @@ export {
   allSystems,
   archiveSystems,
   flagshipSystems,
+  getArchivePath,
   getSystemById,
   getSystemPath,
 } from "./systems";
