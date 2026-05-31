@@ -8,9 +8,9 @@ export const systemHighlights: Record<string, SystemHighlight> = {
   "001": {
     headline: "Built to run an entire festival — without losing a single receipt.",
     metrics: [
-      { value: "Multi-campus", label: "Institutional scale" },
-      { value: "0", label: "Duplicate receipts" },
-      { value: "Live", label: "Coordinator dashboards" },
+      { value: "10,000+", label: "Receipts generated" },
+      { value: "500+", label: "Active users" },
+      { value: "17Lakh+", label: "Collections managed" },
     ],
     modules: [
       { title: "Registration", detail: "Volunteer-led intake with college Google SSO." },
@@ -22,9 +22,8 @@ export const systemHighlights: Record<string, SystemHighlight> = {
   "002": {
     headline: "One portal for the full internship lifecycle — not another spreadsheet.",
     metrics: [
-      { value: "End-to-end", label: "Student → faculty flow" },
-      { value: "Weekly", label: "Progress logging" },
-      { value: "Permanent", label: "Audit history" },
+      { value: "300+", label: "Students supported" },
+      { value: "4,000+", label: "Reports managed" },
     ],
     modules: [
       { title: "Objectives", detail: "Structured goal submission at term start." },
@@ -36,9 +35,8 @@ export const systemHighlights: Record<string, SystemHighlight> = {
   "003": {
     headline: "Governance that outlasts every council tenure.",
     metrics: [
-      { value: "Full", label: "Meeting records" },
-      { value: "Tracked", label: "Attendance history" },
-      { value: "Archived", label: "Searchable reports" },
+      { value: "20+", label: "Reports managed annually" },
+      { value: "5+", label: "Years of archived data" },
     ],
     modules: [
       { title: "Council ops", detail: "Central hub for meetings and decisions." },

@@ -46,6 +46,13 @@ export function SystemPulseSection({ highlight }: { highlight: SystemHighlight }
       ? "md:grid-cols-2 lg:grid-cols-3"
       : "md:grid-cols-2 lg:grid-cols-4";
 
+  const metricsCols =
+    highlight.metrics.length === 2
+      ? "sm:grid-cols-2"
+      : highlight.metrics.length >= 4
+        ? "sm:grid-cols-2 lg:grid-cols-4"
+        : "sm:grid-cols-3";
+
   return (
     <section>
       <div className="relative overflow-hidden bg-ink text-seashell">
@@ -73,7 +80,7 @@ export function SystemPulseSection({ highlight }: { highlight: SystemHighlight }
             {highlight.headline}
           </motion.h3>
 
-          <div className="mt-12 grid gap-8 border-t border-seashell/15 pt-10 sm:grid-cols-3">
+          <div className={`mt-12 grid gap-8 border-t border-seashell/15 pt-10 ${metricsCols}`}>
             {highlight.metrics.map((metric, i) => (
               <motion.div
                 key={metric.label}
