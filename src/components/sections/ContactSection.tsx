@@ -32,6 +32,17 @@ export function ContactSection() {
 
           <LineDraw className="mb-12 bg-seashell/20" />
 
+          <FadeIn delay={0.15}>
+            <a
+              href={siteConfig.resume.href}
+              download={siteConfig.resume.filename}
+              className="mb-14 inline-flex items-center gap-3 border border-seashell px-5 py-3 font-mono text-sm tracking-[0.12em] uppercase transition-colors hover:bg-seashell hover:text-ink"
+            >
+              Download my resume
+              <span aria-hidden>↓</span>
+            </a>
+          </FadeIn>
+
           <StaggerContainer className="grid gap-12 md:grid-cols-3 md:gap-8">
             <StaggerItem>
               <p className="label-caps mb-4 text-seashell/60">Mail</p>
