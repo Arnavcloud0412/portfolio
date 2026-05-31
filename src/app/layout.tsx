@@ -30,6 +30,11 @@ export const metadata: Metadata = {
   title: "Arnav Deka — Developer & Designer",
   description:
     "A portfolio cataloguing interfaces, systems, and quiet obsessions — built between deadlines, dusk, and the occasional zero-gravity daydream.",
+  icons: {
+    icon: "/favion.png",
+    shortcut: "/favion.png",
+    apple: "/favion.png",
+  },
 };
 
 export default function RootLayout({
