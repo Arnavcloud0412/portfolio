@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Arnav Deka",
   initials: "AD",
-  tagline: "Developer & Designer",
+  tagline: "SOFTWARE ENGINEER & RESEARCHER",
   email: "arnavdeka2005@gmail.com",
   location: "Mumbai, IN",
   timezone: "GMT+5:30 · Mostly nocturnal",
