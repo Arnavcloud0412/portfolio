@@ -19,7 +19,7 @@ export function ContactSection() {
       <div className="page-padding flex min-h-[80vh] flex-col py-20 md:min-h-screen md:py-28">
         <FadeIn>
           <p className="mb-12 font-mono text-xs tracking-[0.2em] text-seashell/60 uppercase">
-            § 06 — End of transmission
+            § 07 — End of transmission
           </p>
         </FadeIn>
 

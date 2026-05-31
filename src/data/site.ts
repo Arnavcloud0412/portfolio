@@ -1,4 +1,5 @@
-export { siteConfig, skills } from "./site-config";
+export { siteConfig } from "./site-config";
+export { skillCategories, type SkillCategory } from "./skills";
 
 export type { SystemDetail as System } from "./systems";
 

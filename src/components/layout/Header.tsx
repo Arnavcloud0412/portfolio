@@ -5,13 +5,14 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { NavArchiveCta, NavArchiveLink } from "@/components/ui/ArchiveAnnotation";
 import { siteConfig } from "@/data/site";
 
-const SECTION_IDS = ["hero", "log", "work", "archive", "timeline", "about", "contact"];
+const SECTION_IDS = ["hero", "log", "work", "archive", "timeline", "skills", "about", "contact"];
 
 const NAV_HINTS: Record<string, string> = {
   Log: "Operator log",
   Systems: "Flagship index",
   Trajectory: "Mission history",
-  Operator: "Profile & toolkit",
+  Skills: "Technical stack",
+  Operator: "Profile & bio",
 };
 
 const NAV_BUBBLE_ITEMS = siteConfig.nav.filter((item) => item.label !== "Contact");

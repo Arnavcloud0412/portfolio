@@ -16,18 +16,8 @@ export const siteConfig = {
     { label: "Log", href: "#log" },
     { label: "Systems", href: "#work" },
     { label: "Trajectory", href: "#timeline" },
+    { label: "Skills", href: "#skills" },
     { label: "Operator", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
-};
-
-export const skills = {
-  design: ["Information architecture", "Editorial systems", "UX & product", "Type systems"],
-  engineering: [
-    "React · TypeScript · Next.js",
-    "Node · PostgreSQL · PostGIS",
-    "Python · TensorFlow · OpenCV",
-    "GeoServer · WebGIS",
-  ],
-  toolkit: ["Figma", "Streamlit", "Git · CI/CD", "A very loud kettle"],
 };
