@@ -30,6 +30,33 @@ export function AstronautIllustration() {
   );
 }
 
+export function RocketIllustration() {
+  return (
+    <motion.div
+      className="pointer-events-none absolute right-[2%] top-[8%] hidden w-52 lg:block xl:right-[4%] xl:top-[10%] xl:w-64 2xl:w-72"
+      animate={{
+        y: [0, -14, -6, -18, 0],
+        x: [0, 5, -3, 4, 0],
+        rotate: [0, 0.8, -0.5, 0.6, 0],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <Image
+        src="/lofi-rocket.png"
+        alt=""
+        width={800}
+        height={800}
+        className="h-auto w-full object-contain"
+        aria-hidden
+      />
+    </motion.div>
+  );
+}
+
 export function CockpitIllustration() {
   return (
     <div className="relative w-full text-ink">

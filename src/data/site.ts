@@ -1,4 +1,4 @@
-export { siteConfig, timeline, skills } from "./site-config";
+export { siteConfig, skills } from "./site-config";
 
 export type { SystemDetail as System } from "./systems";
 
@@ -12,3 +12,9 @@ export {
 } from "./systems";
 
 export type { SystemDetail, DiagramType } from "./systems";
+
+export {
+  timeline,
+  TRAJECTORY_START,
+  type TimelineEntry,
+} from "./trajectory";
