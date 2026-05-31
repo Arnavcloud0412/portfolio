@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   FadeIn,
@@ -8,10 +9,19 @@ import {
 import { SystemIndexRow } from "@/components/systems/SystemIndexRow";
 import { allSystems } from "@/data/systems";
 
-export const metadata = {
-  title: "Complete Archive — Arnav Deka",
+export const metadata: Metadata = {
+  title: "Complete Archive",
   description:
     "Full index of documented systems — flagship platforms, experiments, and side quests from 001 to 011.",
+  alternates: {
+    canonical: "/archive",
+  },
+  openGraph: {
+    title: "Complete Archive · Arnav Deka",
+    description:
+      "Full index of documented systems — flagship platforms, experiments, and side quests from 001 to 011.",
+    url: "/archive",
+  },
 };
 
 export default function ArchivePage() {

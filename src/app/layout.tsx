@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { PageWrapper } from "@/components/layout/PageWrapper";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { createSiteMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -26,16 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Arnav Deka — Developer & Designer",
-  description:
-    "A portfolio cataloguing interfaces, systems, and quiet obsessions — built between deadlines, dusk, and the occasional zero-gravity daydream.",
-  icons: {
-    icon: "/favion.png",
-    shortcut: "/favion.png",
-    apple: "/favion.png",
-  },
-};
+export const metadata: Metadata = createSiteMetadata();
 
 export default function RootLayout({
   children,
@@ -49,6 +42,7 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <JsonLd />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})()`,

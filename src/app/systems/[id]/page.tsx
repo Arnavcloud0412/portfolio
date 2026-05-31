@@ -30,8 +30,21 @@ export async function generateMetadata({ params }: PageProps) {
   if (!system) return { title: "System not found" };
 
   return {
-    title: `${system.title} — System ${system.id} · Arnav Deka`,
+    title: `${system.title} — System ${system.id}`,
     description: system.description,
+    alternates: {
+      canonical: `/systems/${system.id}`,
+    },
+    openGraph: {
+      title: `${system.title} · System ${system.id}`,
+      description: system.description,
+      url: `/systems/${system.id}`,
+      type: "article",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
