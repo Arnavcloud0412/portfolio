@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import type { System } from "@/data/site";
 import {
   FadeIn,
   StaggerContainer,
@@ -9,13 +9,13 @@ import {
   TextReveal,
 } from "@/components/motion/FadeIn";
 import { SystemImagePreview, useSystemImage } from "@/components/ui/SystemImagePreview";
-import { flagshipSystems } from "@/data/site";
+import { flagshipSystems, getSystemPath, type SystemDetail } from "@/data/systems";
 
-function formatTags(system: System) {
+function formatTags(system: SystemDetail) {
   return [...system.tags, system.year].join(" · ");
 }
 
-function FlagshipEntry({ system, emphasis }: { system: System; emphasis?: boolean }) {
+function FlagshipEntry({ system, emphasis }: { system: SystemDetail; emphasis?: boolean }) {
   const [hovered, setHovered] = useState(false);
   const hasImage = useSystemImage(system.id);
 
@@ -55,12 +55,22 @@ function FlagshipEntry({ system, emphasis }: { system: System; emphasis?: boolea
               : "text-[clamp(1.75rem,3vw,2.5rem)]"
           }`}
         >
-          {system.title}
+          <Link
+            href={getSystemPath(system.id)}
+            className="transition-opacity hover:opacity-70"
+          >
+            {system.title}
+          </Link>
         </h3>
         <p className="label-caps mt-3">{formatTags(system)}</p>
         {hasImage && (
           <p className="mt-4 hidden font-mono text-[10px] tracking-[0.14em] text-ink-faint uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
-            ↳ Hover to view interface
+            ↳ Hover to preview · Click to open dossier
+          </p>
+        )}
+        {!hasImage && (
+          <p className="mt-4 hidden font-mono text-[10px] tracking-[0.14em] text-ink-faint uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
+            ↳ Click to open dossier
           </p>
         )}
       </div>

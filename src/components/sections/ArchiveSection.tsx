@@ -1,21 +1,21 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
-import type { System } from "@/data/site";
 import {
   FadeIn,
   StaggerContainer,
   StaggerItem,
   TextReveal,
 } from "@/components/motion/FadeIn";
-import { archiveSystems } from "@/data/site";
+import { archiveSystems, getSystemPath, type SystemDetail } from "@/data/systems";
 
-function formatTags(system: System) {
+function formatTags(system: SystemDetail) {
   return [...system.tags, system.year].join(" · ");
 }
 
-function ArchiveEntry({ system }: { system: System }) {
+function ArchiveEntry({ system }: { system: SystemDetail }) {
   return (
     <article className="group grid gap-4 border-t border-line py-8 md:grid-cols-12 md:gap-8 md:py-10">
       <div className="md:col-span-1">
@@ -23,8 +23,10 @@ function ArchiveEntry({ system }: { system: System }) {
       </div>
 
       <div className="md:col-span-3">
-        <h3 className="text-lg font-medium tracking-tight transition-opacity group-hover:opacity-70 md:text-xl">
-          {system.title}
+        <h3 className="text-lg font-medium tracking-tight md:text-xl">
+          <Link href={getSystemPath(system.id)} className="transition-opacity hover:opacity-70">
+            {system.title}
+          </Link>
         </h3>
         <p className="label-caps mt-2 text-[10px] md:text-xs">{formatTags(system)}</p>
       </div>

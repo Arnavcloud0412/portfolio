@@ -60,12 +60,6 @@ export function SystemImagePreview({ id, title, visible }: SystemImagePreviewPro
                 className="object-cover object-top"
                 sizes="(max-width: 1280px) 400px, 440px"
               />
-              <motion.div
-                className="system-preview-scan absolute inset-x-0 h-1/4 bg-gradient-to-b from-transparent via-ink/5 to-transparent"
-                initial={{ top: "-20%" }}
-                animate={{ top: ["-20%", "120%"] }}
-                transition={{ duration: 1.4, ease: "easeInOut" }}
-              />
             </div>
 
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-line pt-3">
