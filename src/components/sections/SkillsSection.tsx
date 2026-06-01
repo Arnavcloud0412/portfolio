@@ -41,14 +41,14 @@ function DeploymentStrip({
       }
     >
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-        <p className="max-w-3xl text-sm leading-relaxed text-ink-muted md:text-base">
-          <span className="font-medium text-ink">{skill}</span>
-          {brief && <span> — {brief.context}</span>}
+        <p className="max-w-3xl text-sm leading-relaxed text-ink md:text-base">
+          <span className="font-medium">{skill}</span>
+          {brief && <span className="text-ink-muted"> — {brief.context}</span>}
         </p>
         <button
           type="button"
           onClick={onClear}
-          className="label-caps shrink-0 text-ink-faint transition-opacity hover:text-ink"
+          className="label-caps shrink-0 transition-opacity hover:text-ink"
         >
           Clear
         </button>
@@ -60,17 +60,17 @@ function DeploymentStrip({
             <Link
               key={project.id}
               href={project.href}
-              className="border border-line bg-offwhite/50 px-2.5 py-1.5 font-mono text-[11px] tracking-wide text-ink-muted transition-colors hover:border-ink hover:text-ink"
+              className="border border-line bg-offwhite/50 px-2.5 py-1.5 font-mono text-[11px] tracking-wide text-ink transition-colors hover:border-ink"
             >
-              <span className="text-ink-faint">{project.id}</span>
-              <span className="mx-1.5 text-ink-faint/60">·</span>
+              <span className="text-ink-muted">{project.id}</span>
+              <span className="mx-1.5 text-ink-faint">·</span>
               {project.title}
-              <span className="ml-1.5 text-ink-faint">↗</span>
+              <span className="ml-1.5 text-ink-muted">↗</span>
             </Link>
           ))}
         </div>
       ) : (
-        <p className="label-caps text-ink-faint">In development</p>
+        <p className="label-caps">In development</p>
       )}
     </motion.div>
   );
@@ -93,7 +93,7 @@ function SkillChip({
       className={`border px-3.5 py-2 font-mono text-xs tracking-wide transition-colors duration-200 md:text-sm ${
         isSelected
           ? "border-ink bg-ink text-seashell"
-          : "border-line text-ink-muted hover:border-ink/40 hover:text-ink"
+          : "border-line text-ink hover:border-ink/40"
       }`}
     >
       {skill}
@@ -122,7 +122,7 @@ export function SkillsSection() {
 
       <LineDraw className="mb-8 md:mb-10" />
 
-      <p className="label-caps mb-6 text-ink-faint">
+      <p className="label-caps mb-6">
         Click a skill to see archive deployments
       </p>
 

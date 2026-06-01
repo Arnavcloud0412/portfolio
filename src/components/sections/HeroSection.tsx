@@ -17,7 +17,7 @@ export function HeroSection() {
         <div className="flex flex-col lg:grid lg:min-h-[calc(100vh-4.5rem)] lg:grid-cols-[1.15fr_0.85fr] lg:gap-x-16">
           <div className="flex flex-col lg:flex-1">
             <FadeIn delay={0.1}>
-              <p className="label-caps mb-4 text-sm md:mb-8 md:text-base">
+              <p className="label-caps mb-4 text-sm text-ink md:mb-8 md:text-base">
                 ↳ {siteConfig.name.toUpperCase()} — {siteConfig.tagline.toUpperCase()}
               </p>
             </FadeIn>

@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-seashell: #f7f3ee;
+  --color-seashell: #f5f1eb;
   --color-offwhite: #faf8f5;
-  --color-ink: #0a0a0a;
-  --color-ink-muted: #3d3d3d;
-  --color-ink-faint: #5c5752;
-  --color-line: #d4cfc8;
+
+  --color-ink: #111111;
+  --color-ink-muted: #2c2c2c;
+  --color-ink-faint: #57514a;
+
+  --color-line: #bdb5ac;
+  --color-dot-grid: #a9a198;
 
   --font-serif: var(--font-instrument-serif), "Georgia", serif;
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
@@ -25,6 +28,7 @@
     --color-ink-muted: #c8c3bc;
     --color-ink-faint: #9a9590;
     --color-line: #2a2a2a;
+    --color-dot-grid: #2a2a2a;
   }
 
   body {
@@ -40,16 +44,24 @@
 
 @layer utilities {
   .dot-grid {
-    background-image: radial-gradient(circle, #c8c3bc 0.8px, transparent 0.8px);
-    background-size: 24px 24px;
+    background-image: radial-gradient(
+      circle,
+      var(--color-dot-grid) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
   }
 
   html[data-theme="dark"] .dot-grid {
-    background-image: radial-gradient(circle, #2a2a2a 0.8px, transparent 0.8px);
+    background-image: radial-gradient(
+      circle,
+      var(--color-dot-grid) 1px,
+      transparent 1px
+    );
   }
 
   .label-caps {
-    @apply font-mono text-xs uppercase tracking-[0.18em] text-ink-faint;
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-ink-muted;
   }
 
   .serif-display {
