@@ -8,19 +8,20 @@ import {
 } from "@/components/motion/FadeIn";
 import { SystemIndexRow } from "@/components/systems/SystemIndexRow";
 import { allSystems } from "@/data/systems";
+import { getCanonicalUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Complete Archive",
   description:
     "Full index of documented systems — flagship platforms, experiments, and side quests from 001 to 011.",
   alternates: {
-    canonical: "/archive",
+    canonical: getCanonicalUrl("/archive"),
   },
   openGraph: {
     title: "Complete Archive · Arnav Deka",
     description:
       "Full index of documented systems — flagship platforms, experiments, and side quests from 001 to 011.",
-    url: "/archive",
+    url: getCanonicalUrl("/archive"),
   },
 };
 

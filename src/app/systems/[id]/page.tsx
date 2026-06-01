@@ -11,6 +11,7 @@ import {
   getSystemPath,
   type SystemDetail,
 } from "@/data/systems";
+import { getCanonicalUrl } from "@/lib/site-url";
 
 function formatTags(system: SystemDetail) {
   return [...system.tags, system.year].join(" · ");
@@ -33,12 +34,12 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${system.title} — System ${system.id}`,
     description: system.description,
     alternates: {
-      canonical: `/systems/${system.id}`,
+      canonical: getCanonicalUrl(`/systems/${system.id}`),
     },
     openGraph: {
       title: `${system.title} · System ${system.id}`,
       description: system.description,
-      url: `/systems/${system.id}`,
+      url: getCanonicalUrl(`/systems/${system.id}`),
       type: "article",
     },
     robots: {

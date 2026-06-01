@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/data/site-config";
-import { getSiteUrl } from "@/lib/site-url";
+import { getCanonicalUrl, getSiteUrl } from "@/lib/site-url";
 
 export const siteDescription =
   "Portfolio of Arnav Deka — full-stack developer building institutional systems, event operations platforms, academic portals, and AI-powered applications across Mumbai, India.";
@@ -79,7 +79,7 @@ export function createSiteMetadata(): Metadata {
       images: [ogImage],
     },
     alternates: {
-      canonical: siteUrl,
+      canonical: getCanonicalUrl(),
     },
     ...(process.env.GOOGLE_SITE_VERIFICATION
       ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
