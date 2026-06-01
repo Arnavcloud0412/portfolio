@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { PageWrapper } from "@/components/layout/PageWrapper";
+import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { createSiteMetadata } from "@/lib/seo";
@@ -50,6 +51,7 @@ export default function RootLayout({
         />
       </head>
       <body className="dot-grid">
+        <GoogleAnalytics />
         <ThemeProvider>
           <PageWrapper>{children}</PageWrapper>
         </ThemeProvider>
