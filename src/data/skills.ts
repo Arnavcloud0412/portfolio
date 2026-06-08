@@ -51,7 +51,6 @@ export const skillCategories: SkillCategory[] = [
       "Vercel",
       "Google Cloud Console",
       "Firebase Console",
-      "Cloudflare Tunnel",
     ],
   },
   {

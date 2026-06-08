@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { SystemImageInline, SystemImagePreview, useSystemImage } from "@/components/ui/SystemImagePreview";
 import { getSystemPath, type SystemDetail } from "@/data/systems";
 
@@ -23,22 +23,40 @@ export function SystemIndexRow({
   showPreview = true,
 }: SystemIndexRowProps) {
   const [hovered, setHovered] = useState(false);
+  const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
   const hasImage = useSystemImage(system.id);
   const previewActive = showPreview && hovered && hasImage === true;
+
+  const handleMouseEnter = (event: MouseEvent<HTMLElement>) => {
+    setHovered(true);
+    setCursor({ x: event.clientX, y: event.clientY });
+  };
+
+  const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
+    setCursor({ x: event.clientX, y: event.clientY });
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setCursor(null);
+  };
 
   return (
     <article
       className={`group relative border-t border-line transition-[z-index] duration-0 hover:z-20 ${
         emphasis ? "py-14 md:py-20" : compact ? "py-8 md:py-10" : "py-12 md:py-16"
       }`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       {showPreview && (
         <SystemImagePreview
           id={system.id}
           title={system.title}
           visible={previewActive}
+          cursor={cursor}
+          followCursor
         />
       )}
 

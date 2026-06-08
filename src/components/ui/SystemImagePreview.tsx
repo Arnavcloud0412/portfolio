@@ -29,11 +29,42 @@ export function useSystemImage(id: string) {
   return available;
 }
 
+type CursorPoint = {
+  x: number;
+  y: number;
+};
+
 type SystemImagePreviewProps = {
   id: string;
   title: string;
   visible: boolean;
+  cursor?: CursorPoint | null;
+  followCursor?: boolean;
 };
+
+const PREVIEW_OFFSET = 20;
+const PREVIEW_MAX_WIDTH = 440;
+
+function getCursorPreviewPosition(cursor: CursorPoint) {
+  const width = Math.min(window.innerWidth * 0.92, PREVIEW_MAX_WIDTH);
+  const height = width * (10 / 16) + 72;
+
+  let left = cursor.x + PREVIEW_OFFSET;
+  let top = cursor.y + PREVIEW_OFFSET;
+
+  if (left + width > window.innerWidth - 16) {
+    left = cursor.x - width - PREVIEW_OFFSET;
+  }
+
+  if (top + height > window.innerHeight - 16) {
+    top = cursor.y - height - PREVIEW_OFFSET;
+  }
+
+  return {
+    left: Math.max(16, Math.min(left, window.innerWidth - width - 16)),
+    top: Math.max(16, Math.min(top, window.innerHeight - height - 16)),
+  };
+}
 
 function SystemImageFrame({ id, title }: { id: string; title: string }) {
   return (
@@ -67,15 +98,31 @@ export function SystemImageInline({ id, title }: { id: string; title: string }) 
   return <SystemImageFrame id={id} title={title} />;
 }
 
-export function SystemImagePreview({ id, title, visible }: SystemImagePreviewProps) {
+export function SystemImagePreview({
+  id,
+  title,
+  visible,
+  cursor = null,
+  followCursor = false,
+}: SystemImagePreviewProps) {
+  const useCursorPosition = followCursor && cursor;
+  const position = useCursorPosition ? getCursorPreviewPosition(cursor) : null;
+
   return (
     <AnimatePresence>
-      {visible && (
+      {visible && (!followCursor || cursor) && (
         <motion.div
-          className="system-preview pointer-events-none absolute top-6 right-0 z-30 hidden w-[min(92vw,400px)] lg:block xl:top-4 xl:w-[440px]"
-          initial={{ opacity: 0, y: 16, scale: 0.94, filter: "blur(6px)" }}
+          className={`system-preview pointer-events-none z-50 hidden w-[min(92vw,400px)] lg:block xl:w-[440px] ${
+            useCursorPosition ? "fixed" : "absolute top-6 right-0 z-30 xl:top-4"
+          }`}
+          style={
+            position
+              ? { left: position.left, top: position.top }
+              : undefined
+          }
+          initial={{ opacity: 0, y: useCursorPosition ? 0 : 16, scale: 0.94, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: 10, scale: 0.97, filter: "blur(4px)" }}
+          exit={{ opacity: 0, y: useCursorPosition ? 0 : 10, scale: 0.97, filter: "blur(4px)" }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <SystemImageFrame id={id} title={title} />
