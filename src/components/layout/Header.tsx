@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { NavArchiveCta, NavArchiveLink } from "@/components/ui/ArchiveAnnotation";
@@ -56,10 +57,15 @@ function HamburgerButton({
 }
 
 export function Header() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
+    if (!isHomePage) return;
+
     const observers: IntersectionObserver[] = [];
 
     SECTION_IDS.forEach((id) => {
@@ -80,7 +86,20 @@ export function Header() {
     });
 
     return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  }, [isHomePage]);
+
+  useEffect(() => {
+    if (!isHomePage) return;
+
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+
+    const timer = window.setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+
+    return () => window.clearTimeout(timer);
+  }, [isHomePage, pathname]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -102,8 +121,14 @@ export function Header() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    const id = href.replace("#", "");
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+    if (isHomePage) {
+      const id = href.replace("#", "");
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    router.push(`/${href}`);
   };
 
   return (
